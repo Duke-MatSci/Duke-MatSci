@@ -10,7 +10,12 @@
     rdfs:label "MaterialsMine Ontology" ;
     dcterms:creator "Catherine L. Brinson" ;
     dcterms:description "A materials ontology to support data publication involving nanomaterials and metamaterials." ;
-    dcterms:contributor "<https://orcid.org/0000-0003-2551-1563>,<https://orcid.org/0000-0001-5296-4440>,<https://orcid.org/0000-0001-7037-4567>,<https://orcid.org/0000-0002-2061-2261>,<https://orcid.org/0000-0001-8995-0050>" ;
+    dcterms:contributor 
+        <https://orcid.org/0000-0003-2551-1563>,
+        <https://orcid.org/0000-0001-5296-4440>,
+        <https://orcid.org/0000-0001-7037-4567>,
+        <https://orcid.org/0000-0002-2061-2261>,
+        <https://orcid.org/0000-0001-8995-0050> ;
     dcterms:email "materialsmine-dev@duke.edu" ;
     dcterms:license <https://creativecommons.org/licenses/by-nc-sa/4.0> ;
     owl:imports <http://semanticscience.org/ontology/sio.owl> .
