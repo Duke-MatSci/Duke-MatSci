@@ -1,0 +1,60 @@
+@prefix : <http://materialsmine.org/ontology#> .
+@prefix sio: <http://semanticscience.org/resource/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Ontology Metadata
+<http://materialsmine.org/ontology>
+    a owl:Ontology ;
+    rdfs:label "MaterialsMine Ontology" ;
+    dcterms:creator "Catherine L. Brinson" ;
+    dcterms:description "A materials ontology to support data publication involving nanomaterials and metamaterials." ;
+    dcterms:contributor "<https://orcid.org/0000-0003-2551-1563>,<https://orcid.org/0000-0001-5296-4440>,<https://orcid.org/0000-0001-7037-4567>,<https://orcid.org/0000-0002-2061-2261>,<https://orcid.org/0000-0001-8995-0050>" ;
+    dcterms:email "materialsmine-dev@duke.edu" ;
+    dcterms:license <https://creativecommons.org/licenses/by-nc-sa/4.0> ;
+    owl:imports <http://semanticscience.org/ontology/sio.owl> .
+
+# Classes
+:Description a owl:Class ;
+    rdfs:label "Description" ;
+    rdfs:comment "A textual description of an entity." .
+
+:Contributor a owl:Class ;
+    rdfs:label "Contributor" ;
+    rdfs:comment "A person or entity contributing to the ontology or project." .
+
+:Email a owl:Class ;
+    rdfs:label "Email" ;
+    rdfs:comment "An email address associated with an entity." .
+
+:MailingList a owl:Class ;
+    rdfs:label "Mailing List" ;
+    rdfs:comment "A mailing list for organizational communication." .
+
+:Website a owl:Class ;
+    rdfs:label "Website" ;
+    rdfs:comment "A website URL associated with an entity." .
+
+:Category a owl:Class ;
+    rdfs:label "Category" ;
+    rdfs:comment "A classification category for organizing entities." .
+
+# Properties
+:hasEmail a owl:ObjectProperty ;
+    rdfs:domain :Contributor ;
+    rdfs:range :Email ;
+    rdfs:label "has email" ;
+    rdfs:comment "Associates a contributor with an email address." .
+
+:hasWebsite a owl:ObjectProperty ;
+    rdfs:domain :Contributor ;
+    rdfs:range :Website ;
+    rdfs:label "has website" ;
+    rdfs:comment "Associates a contributor with a website." .
+
+:belongsToCategory a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range :Category ;
+    rdfs:label "belongs to category" ;
+    rdfs:comment "Associates an entity with a category." .
