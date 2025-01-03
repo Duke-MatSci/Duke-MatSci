@@ -3,22 +3,34 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix np: <http://www.nanopub.org/nschema#> .
 
 # Ontology Metadata
 <http://materialsmine.org/ontology>
     a owl:Ontology ;
-    rdfs:label "MaterialsMine Ontology" ;
+    rdfs:label "MaterialsMine Ontology"@en ;
+    rdfs:label "Ontología de MaterialsMine"@es ; #
+    rdfs:label "Ontologie de MaterialsMine"@fr ; #
     dcterms:creator "Catherine L. Brinson" ;
-    dcterms:description "A materials ontology to support data publication involving nanomaterials and metamaterials." ;
+    dcterms:description "An ontology to represent basic organizational information for MaterialsMine"@en ;
+    dcterms:description "Una ontología para representar información organizacional básica para MaterialsMine"@es ;
+    dcterms:description "Une ontologie pour représenter les informations organisationnelles de base pour MaterialsMine"@fr ;
     dcterms:contributor 
         <https://orcid.org/0000-0003-2551-1563>,
+        <https://orcid.org/0000-0002-4653-7124>,
         <https://orcid.org/0000-0001-5296-4440>,
         <https://orcid.org/0000-0001-7037-4567>,
         <https://orcid.org/0000-0002-2061-2261>,
         <https://orcid.org/0000-0001-8995-0050> ;
     dcterms:email "materialsmine-dev@duke.edu" ;
     dcterms:license <https://creativecommons.org/licenses/by-nc-sa/4.0> ;
-    owl:imports <http://semanticscience.org/ontology/sio.owl> .
+    owl:imports 
+        <http://semanticscience.org/ontology/sio.owl>,
+        <http://purl.org/ontology/bibo/>,
+        <http://www.nanopub.org/nschema#>;
+    owl:versionIRI materialsmine:1.1 .
 
 # Classes
 :Description a owl:Class ;
@@ -45,6 +57,43 @@
     rdfs:label "Category" ;
     rdfs:comment "A classification category for organizing entities." .
 
+:VolumeFraction a owl:Class ;
+    rdfs:label "Volume Fraction" ;
+    rdfs:label "Fracción volumétrica"@es ;
+    rdfs:label "Fraction volumique"@fr ;
+    rdfs:subClassOf sio:SIO_001088 ;
+    skos:definition "The volume of a constituent divided by the volume of all constituents of the mixture prior to mixing."@en, "El volumen de un constituyente dividido por el volumen de todos los constituyentes de la mezcla antes de mezclar."@es, "Le volume d’un constituant divisé par le volume de tous les constituants du mélange avant le mélange."@fr .
+
+:PeakPosition a owl:Class ;
+    rdfs:label "Peak Position" ;
+    rdfs:subClassOf sio:SIO_000144 ;
+    skos:definition "The Q value, in reciprocal space, corresponding to the maximum intensity of the first peak observed in 1D graph." .
+
+:FWHM a owl:Class ;
+    rdfs:label "Full-Width Half-Max" ;
+    rdfs:subClassOf sio:SIO_000144 ;
+    skos:definition "The numerical value associated with full width half maximum of the first peak observed in 1D graph." .
+
+:DomainSpacing a owl:Class ;
+    rdfs:label "Domain Spacing" ;
+    rdfs:subClassOf sio:SIO_000038 ;
+    skos:definition "The length between neighboring domains in a microstructure." .
+
+:GrainSize a owl:Class ;
+    rdfs:label "Grain Size" ;
+    rdfs:subClassOf sio:SIO_000045 ;
+    skos:definition "The area of a microstructural feature defined as a domain in a 2D image." .
+
+:PolymerComponent a owl:Class ;
+    rdfs:label "Polymer Component" ;
+    skos:definition "Polymer component";
+    rdfs:isDefinedBy <http://materialsmine.org/ontology/PolymerComponent> .
+
+:Order a owl:Class ;
+    rdfs:label "Order" ;
+    skos:definition "Order";
+    rdfs:isDefinedBy <http://materialsmine.org/ontology/Order> .
+
 # Properties
 :hasEmail a owl:ObjectProperty ;
     rdfs:domain :Contributor ;
@@ -63,3 +112,5 @@
     rdfs:range :Category ;
     rdfs:label "belongs to category" ;
     rdfs:comment "Associates an entity with a category." .
+
+# Materialsmine Classes
