@@ -1,0 +1,27 @@
+{
+	"name": "@brinsonlab/serializer",
+	"version": "1.0.0",
+	"description": "Knowlege Graph ETL",
+	"main": "dist/serializer.js",
+	"scripts": {
+		"dev:test": "ts-node generate.ts",
+		"lint:fix": "eslint \"packages/**/*.{ts,tsx,js,jsx}\" --fix"
+	},
+	"keywords": [],
+	"author": "@brinsonlab",
+	"license": "UNLICENSED",
+	"devDependencies": {
+		"ts-node": "^10.9.2"
+	},
+	"engines": {
+		"node": ">=18.18.2",
+		"pnpm": ">=7.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Duke-MatSci/Duke-MatSci"
+	},
+	"publishConfig": {
+		"@duke-matsci:registry": "https://npm.pkg.github.com"
+	}
+}
