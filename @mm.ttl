@@ -1,4 +1,4 @@
-@prefix : <http://materialsmine.org/ontology#> .
+@prefix : <http://materialsmine.org/resource/> .
 @prefix sio: <http://semanticscience.org/resource/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -6,15 +6,18 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix np: <http://www.nanopub.org/nschema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 
 # Ontology Metadata
-<http://materialsmine.org/ontology>
+<http://materialsmine.org/resource>
     a owl:Ontology ;
     rdfs:label "MaterialsMine Ontology"@en ;
-    rdfs:label "Ontología de MaterialsMine"@es ; #
-    rdfs:label "Ontologie de MaterialsMine"@fr ; #
+    rdfs:label "MaterialsMine-Ontologie"@de ;
+    rdfs:label "Ontología de MaterialsMine"@es ;
+    rdfs:label "Ontologie de MaterialsMine"@fr ;
     dcterms:creator "Catherine L. Brinson" ;
     dcterms:description "An ontology to represent basic organizational information for MaterialsMine"@en ;
+    dcterms:description "Eine Ontologie zur Darstellung grundlegender Organisationsinformationen für MaterialsMine"@de ;
     dcterms:description "Una ontología para representar información organizacional básica para MaterialsMine"@es ;
     dcterms:description "Une ontologie pour représenter les informations organisationnelles de base pour MaterialsMine"@fr ;
     dcterms:contributor 
@@ -29,8 +32,8 @@
     owl:imports 
         <http://semanticscience.org/ontology/sio.owl>,
         <http://purl.org/ontology/bibo/>,
-        <http://www.nanopub.org/nschema#>;
-    owl:versionIRI materialsmine:1.1 .
+        <http://www.nanopub.org/nschema#> ;
+    owl:versionIRI :1.1 .
 
 # Classes
 :Description a owl:Class ;
@@ -57,12 +60,40 @@
     rdfs:label "Category" ;
     rdfs:comment "A classification category for organizing entities." .
 
+:Nanomaterial a owl:Class ;
+    rdfs:label "Nanomaterial" ;
+    rdfs:subClassOf sio:SIO_000004 ;
+    skos:definition "materials of which a single unit is sized (in at least one dimension) between 1 and 1000 nanometres (10−9 meter) but is usually 1—100 nm" ;
+    prov:wasQuotedFrom "https://en.wikipedia.org/wiki/Nanomaterials" .
+
+:Nanocomposite a owl:Class ;
+    rdfs:label "Nanocomposite" ;
+    rdfs:subClassOf :Nanomaterial ;
+    skos:definition "a multiphase solid material where one of the phases has one, two or three dimensions of less than 100 nanometers (nm), or structures having nano-scale repeat distances between the different phases that make up the material. In the broadest sense this definition can include porous media, colloids, gels and copolymers, but is more usually taken to mean the solid combination of a bulk matrix and nano-dimensional phase(s) differing in properties due to dissimilarities in structure and chemistry." ;
+    prov:wasQuotedFrom "https://en.wikipedia.org/wiki/Nanocomposite" .
+
+:PolymerNanocomposite a owl:Class ;
+    rdfs:label "Polymer Nanocomposite"@en ;
+    rdfs:label "Polymer-Nanokomposit"@de ;
+    rdfs:label "Nanocompuesto de polímero"@es ;
+    rdfs:label "Nanocomposite polymère"@fr ;
+    rdfs:subClassOf :Nanocomposite ;
+    skos:altLabel "PNC" ;
+    prov:wasQuotedFrom "https://en.wikipedia.org/wiki/Polymer_nanocomposite" ;
+    skos:definition "Polymer nanocomposites (PNC) consist of a polymer or copolymer having nanoparticles or nanofillers dispersed in the polymer matrix. These may be of different shape (e.g., platelets, fibers, spheroids), but at least one dimension must be in the range of 1–50 nm."@en, "Polymer-Nanokomposite (PNC) bestehen aus einem Polymer oder Copolymer mit in der Polymermatrix dispergierten Nanopartikeln oder Nanofüllstoffen. Diese können unterschiedliche Formen haben (z. B. Plättchen, Fasern, Sphäroide), aber mindestens eine Dimension muss im Bereich von 1–50 nm liegen."@de, "Los nanocompuestos poliméricos (PNC) consisten en un polímero o copolímero que tiene nanopartículas o nanorellenos dispersados ​​en la matriz polimérica. Estos pueden tener diferentes formas (p. ej., plaquetas, fibras, esferoides), pero al menos una dimensión debe estar en el rango de 1 a 50 nm."@es, "Les nanocomposites polymères (PNC) sont constitués d'un polymère ou d'un copolymère comportant des nanoparticules ou des nanocharges dispersées dans la matrice polymère. Ceux-ci peuvent être de forme différente (par exemple, plaquettes, fibres, sphéroïdes), mais au moins une dimension doit être comprise entre 1 et 50 nm."@fr .
+
+:Units a owl:Class ;
+    rdfs:label "Unit Division"@en ;
+    skos:altLabel "Unit of Measure"@en ;
+    rdfs:subClassOf sio:SIO_000074 .
+
 :VolumeFraction a owl:Class ;
     rdfs:label "Volume Fraction" ;
     rdfs:label "Fracción volumétrica"@es ;
     rdfs:label "Fraction volumique"@fr ;
     rdfs:subClassOf sio:SIO_001088 ;
-    skos:definition "The volume of a constituent divided by the volume of all constituents of the mixture prior to mixing."@en, "El volumen de un constituyente dividido por el volumen de todos los constituyentes de la mezcla antes de mezclar."@es, "Le volume d’un constituant divisé par le volume de tous les constituants du mélange avant le mélange."@fr .
+    prov:wasQuotedFrom "https://en.wikipedia.org/wiki/Volume_fraction" ;
+    skos:definition "The volume of a constituent divided by the volume of all constituents of the mixture prior to mixing."@en, "El volumen de un constituyente dividido por el volumen de todos los constituyentes de la mezcla antes de mezclar."@es, "Le volume d’un constituant divisé par le volume de tous les constituants du mélange avant le mélange."@fr, "Das Volumen eines Bestandteils dividiert durch das Volumen aller Bestandteile der Mischung vor dem Mischen."@de .
 
 :PeakPosition a owl:Class ;
     rdfs:label "Peak Position" ;
@@ -113,4 +144,17 @@
     rdfs:label "belongs to category" ;
     rdfs:comment "Associates an entity with a category." .
 
-# Materialsmine Classes
+
+# Units of measure
+:MilligramsOrMillilitres a :Units ;
+    rdfs:label "mg/ml"@en ;
+    skos:prefLabel "Milligrams or Millilitres"@en ;
+    skos:definition "Milligrams (mg) measure weight, and Millilitres (ml) measure volume of liquid."@en ;
+    skos:notation "mg/ml"@en .
+
+:Nanometer a :Units ;
+    rdfs:label "nm"@en ;
+    skos:prefLabel "Nanometre"@en ;
+    prov:wasQuotedFrom "http://www.ontology-of-units-of-measure.org/resource/om-2/nanometre" ;
+    skos:notation "nm"@en .
+    # skos:related
